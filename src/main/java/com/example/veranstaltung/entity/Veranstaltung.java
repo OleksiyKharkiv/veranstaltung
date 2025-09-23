@@ -22,6 +22,10 @@ public class Veranstaltung {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "veranstaltung_art_id", nullable = false)
+    private VaeranstaltungArt art;
+
     @Override
     public String toString() {
         return "Veranstaltung{" +
