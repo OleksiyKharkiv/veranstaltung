@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name= "veranstaltung_art")
+@Table(name = "veranstaltung_art")
 public class VeranstaltungArt {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

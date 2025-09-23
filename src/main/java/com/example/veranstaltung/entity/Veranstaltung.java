@@ -24,7 +24,7 @@ public class Veranstaltung {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "veranstaltung_art_id", nullable = false)
-    private VaeranstaltungArt art;
+    private VeranstaltungArt art;
 
     @Override
     public String toString() {
