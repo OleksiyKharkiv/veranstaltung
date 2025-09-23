@@ -35,17 +35,13 @@ public class VeranstaltungController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Veranstaltung> updateVeranstaltung(@PathVariable Long id, @RequestBody Veranstaltung veranstaltung) {
-        return veranstaltungService.update(id, veranstaltung)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Veranstaltung> updateVeranstaltung(@PathVariable Long id, @RequestBody Veranstaltung updatedVeranstaltung) {
+        return ResponseEntity.ok(veranstaltungService.updateVeranstaltung(id, updatedVeranstaltung));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVeranstaltung(@PathVariable Long id) {
-        if (veranstaltungService.deleteById(id)) {
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
+        veranstaltungService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

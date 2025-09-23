@@ -30,8 +30,8 @@ public class VeranstaltungService {
         veranstaltungRepository.deleteById(id);
     }
 
-    public Veranstaltung update(Veranstaltung veranstaltung) {
-        if (veranstaltungRepository.existsById(veranstaltung.getId())) {
+    public Veranstaltung updateVeranstaltung(Long id, Veranstaltung veranstaltung) {
+        if (veranstaltungRepository.existsById(veranstaltung.getVeranstaltungId())) {
             return veranstaltungRepository.save(veranstaltung);
         }
         return null;
