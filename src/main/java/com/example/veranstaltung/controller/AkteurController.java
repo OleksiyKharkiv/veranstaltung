@@ -39,7 +39,7 @@ public class AkteurController {
     public ResponseEntity<Akteur> updateAkteur(@PathVariable Long id, @RequestBody Akteur akteur) {
         return akteurService.findById(id)
                 .map(existingAkteur -> {
-                    akteur.setId(id);
+                    akteur.setAkteurId(id);
                     return ResponseEntity.ok(akteurService.save(akteur));
                 })
                 .orElse(ResponseEntity.notFound().build());

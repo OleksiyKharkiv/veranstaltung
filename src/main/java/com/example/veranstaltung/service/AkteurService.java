@@ -36,7 +36,7 @@ public class AkteurService {
 
     public Akteur update(Long id, Akteur akteur) {
         if (akteurRepository.existsById(id)) {
-            akteur.setId(id);
+            akteur.setAkteurId(id);
             return akteurRepository.save(akteur);
         }
         return null;
