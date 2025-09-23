@@ -23,6 +23,9 @@ public class Akteur {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "land", nullable = false)
+    private String land;
+
     @OneToMany(mappedBy = "akteur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VeranstaltungAkteur> veranstaltungAkteurList;
 

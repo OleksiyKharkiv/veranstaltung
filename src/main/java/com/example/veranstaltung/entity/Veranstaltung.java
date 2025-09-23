@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -22,6 +24,8 @@ public class Veranstaltung {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    private Date datum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "veranstaltung_art_id", nullable = false)
