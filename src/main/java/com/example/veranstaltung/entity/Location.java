@@ -21,7 +21,7 @@ public class Location {
     private String name;
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name = "plz", nullable = false)
-private Ort olz;
+private Ort plz;
 
 @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Veranstaltung> veranstaltungen;

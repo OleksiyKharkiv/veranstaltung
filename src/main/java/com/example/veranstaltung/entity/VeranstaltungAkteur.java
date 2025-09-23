@@ -16,12 +16,12 @@ public class VeranstaltungAkteur {
     @EmbeddedId
     private VeranstaltungAkteurId id;
 
-    @MapsId("veranstaltung_id")
+    @MapsId("veranstaltungId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "veranstaltung_id", nullable = false)
     private Veranstaltung veranstaltung;
 
-    @MapsId("akteur_id")
+    @MapsId("akteurId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "akteur_id", nullable = false)
     private Akteur akteur;
