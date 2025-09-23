@@ -1,6 +1,5 @@
 package com.example.veranstaltung.service;
 
-
 import com.example.veranstaltung.dto.BesucherBuchungDTO;
 import com.example.veranstaltung.entity.BesucherBuchung;
 import com.example.veranstaltung.entity.BesucherBuchungId;
@@ -26,7 +25,6 @@ public class BesucherBuchungService {
     /* CREATE / UPDATE (upsert) */
     @Transactional
     public BesucherBuchungDTO save(BesucherBuchungDTO dto) {
-        // существуют ли обе стороны связи?
         if (!besucherRepository.existsById(dto.besucherId())
                 || !buchungRepository.existsById(dto.buchungId())) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,

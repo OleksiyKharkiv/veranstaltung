@@ -1,52 +1,49 @@
 package com.example.veranstaltung.controller;
 
-import com.example.veranstaltung.entity.BesucherBuchung;
+import com.example.veranstaltung.dto.BesucherBuchungDTO;
 import com.example.veranstaltung.service.BesucherBuchungService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/buchungen")
+@RequestMapping("/api/besucher-buchung")
 @RequiredArgsConstructor
 public class BesucherBuchungController {
 
-    private final BesucherBuchungService besucherBuchungService;
+    private final BesucherBuchungService service;
 
+    /* CREATE / UPDATE (upsert) */
     @PostMapping
-    public ResponseEntity<BesucherBuchung> create(@RequestBody BesucherBuchung buchung) {
-        return new ResponseEntity<>(besucherBuchungService.save(buchung), HttpStatus.CREATED);
+    public ResponseEntity<BesucherBuchungDTO> createOrUpdate(
+            @Valid @RequestBody BesucherBuchungDTO dto) {
+        BesucherBuchungDTO saved = service.save(dto);
+        URI uri = URI.create("/api/besucher-buchung/" +
+                saved.besucherId() + "/" + saved.buchungId());
+        return ResponseEntity.created(uri).body(saved);
     }
 
-    @GetMapping
-    public ResponseEntity<List<BesucherBuchung>> getAll() {
-        return ResponseEntity.ok(besucherBuchungService.findAll());
+    /* READ */
+    @GetMapping(params = "besucherId")
+    public List<BesucherBuchungDTO> getByBesucher(@RequestParam Long besucherId) {
+        return service.findByBesucher(besucherId);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BesucherBuchung> getById(@PathVariable Long id) {
-        return besucherBuchungService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping(params = "buchungId")
+    public List<BesucherBuchungDTO> getByBuchung(@RequestParam Long buchungId) {
+        return service.findByBuchung(buchungId);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<BesucherBuchung> updateBuchung(@PathVariable Long id, @RequestBody BesucherBuchung buchung) {
-        return besucherBuchungService.findById(id)
-                .map(existingBuchung -> ResponseEntity.ok(besucherBuchungService.save(buchung)))
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBuchung(@PathVariable Long id) {
-        return besucherBuchungService.findById(id)
-                .map(buchung -> {
-                    besucherBuchungService.deleteById(id);
-                    return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-                })
-                .orElse(ResponseEntity.notFound().build());
+    /* DELETE */
+    @DeleteMapping("/{besucherId}/{buchungId}")
+    public ResponseEntity<Void> delete(
+            @PathVariable Long besucherId,
+            @PathVariable Long buchungId) {
+        service.delete(besucherId, buchungId);
+        return ResponseEntity.noContent().build();
     }
 }
