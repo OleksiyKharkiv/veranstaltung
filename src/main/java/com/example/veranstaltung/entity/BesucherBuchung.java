@@ -1,12 +1,19 @@
 package com.example.veranstaltung.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static jakarta.persistence.FetchType.LAZY;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "besucher_buchung")
 public class BesucherBuchung {
