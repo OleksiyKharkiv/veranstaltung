@@ -21,4 +21,7 @@ public class Akteur {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "akteur", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VeranstaltungAkteur> veranstaltungAkteurList;
+
 }
