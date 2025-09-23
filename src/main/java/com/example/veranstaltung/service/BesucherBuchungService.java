@@ -44,7 +44,7 @@ public class BesucherBuchungService {
     /* READ */
     @Transactional(readOnly = true)
     public List<BesucherBuchungDTO> findByBesucher(Long besucherId) {
-        return repository.findByBesucherId(besucherId)
+        return repository.findById_BesucherId(besucherId)
                 .stream()
                 .map(this::toDto)
                 .toList();
@@ -52,7 +52,7 @@ public class BesucherBuchungService {
 
     @Transactional(readOnly = true)
     public List<BesucherBuchungDTO> findByBuchung(Long buchungId) {
-        return repository.findByBuchungId(buchungId)
+        return repository.findById_BuchungId(buchungId)
                 .stream()
                 .map(this::toDto)
                 .toList();
