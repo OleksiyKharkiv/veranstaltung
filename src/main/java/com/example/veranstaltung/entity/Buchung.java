@@ -11,18 +11,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "veranstaltung_akteur")
-public class VeranstaltungAkteur {
-    @EmbeddedId
-    private VeranstaltungAkteurId id;
+@Table(name = "buchung")
+public class Buchung {
+    @Id
+    @Column(name = "buchung_id", nullable = false, updatable = false)
+    private Long buchungId;
 
-    @MapsId("veranstaltung_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "veranstaltung_id", nullable = false)
     private Veranstaltung veranstaltung;
 
-    @MapsId("akteur_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "akteur_id", nullable = false)
-    private Akteur akteur;
 }

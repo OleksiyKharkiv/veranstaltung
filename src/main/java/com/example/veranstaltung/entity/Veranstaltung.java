@@ -18,7 +18,7 @@ public class Veranstaltung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "veranstaltung_id", nullable = false, updatable = false)
-    private Long id;
+    private Long veranstaltungId;
 
     @Column(name = "name", nullable = false)
     private String name;

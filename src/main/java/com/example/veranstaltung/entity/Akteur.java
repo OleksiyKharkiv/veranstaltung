@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,7 +18,7 @@ public class Akteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "akteur_id", nullable = false, updatable = false)
-    private Long id;
+    private Long akteurId;
 
     @Column(name = "name", nullable = false)
     private String name;
