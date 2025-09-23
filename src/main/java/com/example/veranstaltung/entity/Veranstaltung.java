@@ -2,8 +2,6 @@ package com.example.veranstaltung.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,11 +27,7 @@ public class Veranstaltung {
     @JoinColumn(name = "veranstaltung_art_id", nullable = false)
     private VeranstaltungArt art;
 
-    @Override
-    public String toString() {
-        return "Veranstaltung{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
 }
