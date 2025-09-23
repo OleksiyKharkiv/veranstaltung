@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Veranstaltung {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "veranstaltung_id", nullable = false, updateble = false)
+    @Column(name = "veranstaltung_id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
