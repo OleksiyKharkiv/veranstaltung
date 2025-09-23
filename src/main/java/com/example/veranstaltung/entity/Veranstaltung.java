@@ -18,7 +18,7 @@ import lombok.Setter;
 @Table(name = "veranstaltung")
 public class Veranstaltung {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "veranstaltung_id", nullable = false, updatable = false)
     private Long id;
 

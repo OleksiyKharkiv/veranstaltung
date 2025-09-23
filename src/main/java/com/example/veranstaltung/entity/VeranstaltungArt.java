@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "veranstaltung_art")
 public class VeranstaltungArt {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "veranstaltung_art_id", nullable = false, updatable = false)
     private Long id;
 
