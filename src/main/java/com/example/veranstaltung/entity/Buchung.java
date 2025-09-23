@@ -20,5 +20,4 @@ public class Buchung {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "veranstaltung_id", nullable = false)
     private Veranstaltung veranstaltung;
-
 }
