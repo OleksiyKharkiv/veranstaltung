@@ -79,9 +79,19 @@ API-Dokumentation: `http://localhost:8080/swagger-ui.html` (kommt mit OpenAPI)
 
 | Aktion | Endpunkt | Body (JSON) |
 |--------|----------|-------------|
-| Event anlegen | `POST /api/veranstaltungen` | `{ "name":"Rock im Hof", "datum":"2025-10-18", ... }` |
-| Tickets buchen | `POST /api/besucher-buchung` | `{ "besucherId":1, "buchungId":5, "ticketAnzahl":3, ... }` |
-| Filtern | `GET /api/veranstaltungen?ort=Köln&art=Konzert` | – |
+| Akteur anlegen: `POST http://127.0.0.1:8080/api/akteure` | body: `{
+                                                                      "id": 1,
+                                                                      "name": "ACDC",
+                                                                      "land": "Australia"
+                                                                    }` |
+|  Besucher anlegen: `POSThttp://127.0.0.1:8080/api/besucher | body: ' {
+                                                                            "besucher_id": 1,
+                                                                            "email": "first@gmail.com"
+                                                                        }
+| Akteure ansehen:  http://127.0.0.1:8080/api/akteure
+| Besucher ansehen:  http://127.0.0.1:8080/api/besucher
+| Tickets buchen : `POST /api/besucher-buchung` | `{ "besucherId":1, "buchungId":5, "ticketAnzahl":3, ... }` |
+| Filtern: `GET /api/veranstaltungen?ort=Köln&art=Konzert` | – |
 
 ---
 
