@@ -1,0 +1,115 @@
+# 📍 Veranstaltungs-Portal
+**AFP Akademie Köln | FIAE Laborprojekt**
+
+---
+
+## 🎯 Vision
+Ein schlankes, moderne Ticket-Plattform für Veranstalter & Besucher – gebaut mit **Spring Boot**, **MariaDB** und **MVC Design**.
+Von Anfang an erweiterbar, testbar und cloud-ready.
+
+---
+
+## 🧩 Funktionsumfang (MVP)
+
+| Modul | Feature | Status |
+|-------|---------|--------|
+| **Event Discovery** | Alle Events anzeigen (Konzerte, Partys, Comedy, Ausstellungen) | ✅ |
+| **Filter & Suche** | Ort, Location, Veranstaltungsart, Datum | ✅ |
+| **Ticketkauf** | Direktbuchung inkl. E-Mail-Bestätigung | ✅ |
+| **Veranstalter-Cockpit** | Events anlegen (Datum, Ort, Typ, Preis) | ✅ |
+
+---
+
+## 🚧 Nice-to-have (Backlog)
+
+- 📸 Bildergalerie pro Event
+- 🔐 User-Account-Verifizierung (Mail, OAuth)
+- 🎫 Mehrere Ticket-Kategorien (VIP, Sitzplatz, Stehplatz)
+- 🪑 Interaktiver Sitzplan
+- 💳 Zahlungsanbieter-Integration (PayPal, Stripe, SEPA)
+- 📱 Mobile App mit Push & Statistiken
+
+---
+
+## 🧱 Kern-Domäne (RDM)
+
+| Entität | Bedeutung | Beziehung |
+|---------|-----------|-----------|
+| **Veranstaltung** | Das eigentliche Event | n:1 Location, Veranstaltungsart |
+| **Location** | Saal, Club, Arena | n:1 Ort |
+| **Ort** | Stadt (Postleitzahl) | 1:n Locations |
+| **Veranstaltungsart** | Konzert, Party, Lesung … | 1:n Veranstaltungen |
+| **Akteur** | Künstler*in / DJ / Speaker | n:m Veranstaltung |
+| **Besucher** | Ticketkäufer*in | 1:n Buchung |
+| **Buchung** | Bestellkopf (Gesamtsumme, Datum) | 1:n BesucherBuchung (Positionen) |
+
+---
+
+## 🗃️ Technologie-Stack
+
+- **Java 21** + Spring Boot 3.5
+- **Spring Data JPA** + Hibernate 6
+- **MariaDB 10.4**
+- **Lombok**, **MapStruct**, **Validation(planned)**
+- **Spring REST** + OpenAPI 3 (planned)
+- **Docker** + **Testcontainers** (planned)
+
+---
+
+## 🚀 Schnellstart
+
+```bash
+# 1. Repo klonen
+git clone https://github.com/OleksiyKharkiv/veranstaltung
+cd veranstaltung
+
+# 2. DB starten (Docker)
+docker run -d --name mariadb -p 3306:3306 \
+  -e MARIADB_ROOT_PASSWORD= -e MARIADB_DATABASE=veranstaltung mariadb:10.4
+
+# 3. Starten
+./mvnw spring-boot:run
+```
+
+API-Dokumentation: `http://localhost:8080/swagger-ui.html` (kommt mit OpenAPI)
+
+---
+
+## 📊 Beispiel-Requests
+
+| Aktion | Endpunkt | Body (JSON) |
+|--------|----------|-------------|
+| Event anlegen | `POST /api/veranstaltungen` | `{ "name":"Rock im Hof", "datum":"2025-10-18", ... }` |
+| Tickets buchen | `POST /api/besucher-buchung` | `{ "besucherId":1, "buchungId":5, "ticketAnzahl":3, ... }` |
+| Filtern | `GET /api/veranstaltungen?ort=Köln&art=Konzert` | – |
+
+---
+
+## 📈 Roadmap
+
+| Release | Inhalt |
+|---------|--------|
+| **v0.1** | MVP (aktuell) |
+| **v0.2** | Bilder, User-Verify, Swagger |
+| **v0.3** | VIP-Tickets, Sitzplan, Stripe |
+| **v0.4** | Mobile App, Push, Stats |
+
+---
+
+## 👥 Team & Verantwortlichkeiten
+
+| Name | Rolle |
+|------|-------|
+| Ondrej | DB-Design, Diagramme |
+| Oleks  | Backend, Services |
+| Federico | API, Tests, DTOs |
+
+---
+
+## 📄 Lizenz
+
+MIT – feel free to fork & extend.
+
+---
+
+> **Hinweis:** Dieses Repository ist ein **Lehrprojekt**. Produktiver Einsatz nur mit zusätzlicher Sicherheit, Tests und Monitoring.
