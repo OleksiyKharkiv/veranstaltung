@@ -21,7 +21,7 @@ public class Besucher {
     @Column(name = "besucher_id", nullable = false, updatable = false)
     private Long besucherId;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @OneToMany(mappedBy = "besucher", cascade = CascadeType.ALL, orphanRemoval = true)
