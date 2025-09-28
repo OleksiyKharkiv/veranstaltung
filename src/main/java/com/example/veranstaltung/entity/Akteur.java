@@ -28,5 +28,4 @@ public class Akteur {
 
     @OneToMany(mappedBy = "akteur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VeranstaltungAkteur> veranstaltungAkteurList;
-
 }

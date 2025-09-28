@@ -12,5 +12,4 @@ import lombok.NoArgsConstructor;
 public class BesucherBuchungId {
     private Long besucherId;
     private Long buchungId;
-
 }

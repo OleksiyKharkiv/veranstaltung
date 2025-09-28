@@ -21,6 +21,6 @@ public class Ort {
     @Column(name = "name", nullable = false)
     private String name;
 
-@OneToMany(mappedBy = "plz", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Location> locations;
+    @OneToMany(mappedBy = "plz", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Location> locations;
 }

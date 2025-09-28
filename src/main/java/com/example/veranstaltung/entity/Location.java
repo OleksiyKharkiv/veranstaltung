@@ -19,11 +19,10 @@ public class Location {
 
     @Column(name = "name", nullable = false)
     private String name;
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "plz", nullable = false)
-private Ort plz;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "plz", nullable = false)
+    private Ort plz;
 
-@OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Veranstaltung> veranstaltungen;
-
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Veranstaltung> veranstaltungen;
 }
